@@ -9,7 +9,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitHelper {
     private static RetrofitHelper INSTANCE;
-    private static String BASE_URL = "";
     private static int READ_TIME = 60;
     private static int WRITE_TIME = 60;
     private static int CONN_TIME = 60;
@@ -36,7 +35,7 @@ public class RetrofitHelper {
                 .build();
         retrofit = new Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl(BASE_URL)
+                .baseUrl(ApiService.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
