@@ -33,6 +33,7 @@ public class MvcActivity extends BaseActivity {
     @Override
     protected void initView() {
         mRvList = findViewById(R.id.rv_list);
+        //mRvList.setLayoutManager(new GridLayoutManager(this, 2));
         mRvList.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         mAdapter = new MvcAdapter(this, null);
         mRvList.setAdapter(mAdapter);
