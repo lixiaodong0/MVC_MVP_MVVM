@@ -8,7 +8,7 @@ public class MvpActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_mvp;
+        return R.layout.mvp_activity;
     }
 
     @Override

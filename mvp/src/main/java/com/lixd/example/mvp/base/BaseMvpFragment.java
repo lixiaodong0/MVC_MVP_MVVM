@@ -16,6 +16,7 @@ public abstract class BaseMvpFragment<P extends BasePresenter> extends Fragment 
     protected P mPresenter;
     protected ProgressDialog mProgressDialog;
     protected Context mContext;
+    protected View mRootView;
 
     @Override
     public void onAttach(Context context) {
@@ -29,11 +30,17 @@ public abstract class BaseMvpFragment<P extends BasePresenter> extends Fragment 
         Object layout = getLayout();
         if (layout instanceof Integer) {
             int layoutId = (int) layout;
-            View view = inflater.inflate(layoutId, container, false);
-            return view;
+            mRootView = inflater.inflate(layoutId, container, false);
+            initView(mRootView);
+            initData(savedInstanceState);
+            initEvent();
+            return mRootView;
         } else if (layout instanceof View) {
-            View layoutView = (View) layout;
-            return layoutView;
+            mRootView = (View) layout;
+            initView(mRootView);
+            initData(savedInstanceState);
+            initEvent();
+            return mRootView;
         } else {
             throw new ClassCastException("layout只能是Integer,View类型");
         }
@@ -41,7 +48,7 @@ public abstract class BaseMvpFragment<P extends BasePresenter> extends Fragment 
 
     protected abstract Object getLayout();
 
-    protected abstract void initView();
+    protected abstract void initView(View rootView);
 
     protected void initData(Bundle savedInstanceState) {
 
