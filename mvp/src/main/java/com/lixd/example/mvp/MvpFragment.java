@@ -27,6 +27,13 @@ public class MvpFragment extends BaseMvpFragment<MvpContract.Presenter> implemen
         return fragment;
     }
 
+
+    @Override
+    protected void initData(Bundle savedInstanceState) {
+        super.initData(savedInstanceState);
+        mPresenter.getShareData();
+    }
+
     @Override
     public void showShareData(List<DetailBean> data) {
         mAdapter.setNewData(data);

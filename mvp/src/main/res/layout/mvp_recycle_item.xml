@@ -1,7 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="5dp">
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/img_user_icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="#FF0"/>
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/img_user_icon"
+        android:text="用户名"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/tv_share_contnet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_user_name"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/img_user_icon"
+        android:text="分享的内容\n分享的内容分享的内容分享的内容分享的内容"
+        android:textSize="20sp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_img_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_share_contnet"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/img_user_icon"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_publish_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rv_img_list"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/img_user_icon"
+        android:text="2018年9月25日16:29:27"/>
+
+    <TextView
+        android:id="@+id/tv_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/rv_img_list"
+        android:layout_marginTop="5dp"
+        android:text="Android"/>
+</RelativeLayout>
