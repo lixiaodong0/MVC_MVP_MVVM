@@ -5,10 +5,10 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lixd.example.base.data.DetailBean;
@@ -64,7 +64,7 @@ public class MvpAdapter extends RecyclerView.Adapter<MvpAdapter.MvpViewHolder> {
 
     class MvpViewHolder extends RecyclerView.ViewHolder {
 
-        private final ImageView mImgUserIcon;
+        private final TextView mTvUserIcon;
         private final TextView mTvUserName;
         private final TextView mTvShareContent;
         private final TextView mTvPublishTime;
@@ -73,7 +73,7 @@ public class MvpAdapter extends RecyclerView.Adapter<MvpAdapter.MvpViewHolder> {
 
         public MvpViewHolder(@NonNull View itemView) {
             super(itemView);
-            mImgUserIcon = itemView.findViewById(R.id.img_user_icon);
+            mTvUserIcon = itemView.findViewById(R.id.tv_user_icon);
             mTvUserName = itemView.findViewById(R.id.tv_user_name);
             mTvShareContent = itemView.findViewById(R.id.tv_share_contnet);
             mRvImageList = itemView.findViewById(R.id.rv_img_list);
@@ -82,6 +82,11 @@ public class MvpAdapter extends RecyclerView.Adapter<MvpAdapter.MvpViewHolder> {
         }
 
         private void refresh(DetailBean data, int position) {
+            if (!TextUtils.isEmpty(data.who) && data.who.length() > 0) {
+                mTvUserIcon.setText(data.who.charAt(0)+"");
+            } else {
+                mTvUserIcon.setText("空");
+            }
             mTvUserName.setText(data.who);
             mTvShareContent.setText(data.desc);
             mTvPublishTime.setText(data.publishedAt);

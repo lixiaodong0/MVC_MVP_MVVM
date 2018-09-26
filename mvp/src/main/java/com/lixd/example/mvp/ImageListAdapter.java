@@ -24,8 +24,9 @@ public class ImageListAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         ImageView imageView = new ImageView(mContext);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(100, 100);
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 500);
         imageView.setLayoutParams(layoutParams);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         return new ImageViewHolder(imageView);
     }
 

@@ -1,13 +1,10 @@
 package com.lixd.example.base.data.source;
 
 import com.lixd.example.base.data.DetailBean;
-import com.lixd.example.base.data.ShareBean;
 
 import java.util.List;
 
 import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
-import io.reactivex.functions.Function;
 
 public class ShareRepository implements ShareDataSource {
     private static ShareRepository INSTANCE;
@@ -25,17 +22,8 @@ public class ShareRepository implements ShareDataSource {
     }
 
     @Override
-    public Observable<ShareBean<String>> getTodayShareData() {
-        return mRemote.getTodayShareData()
-                .flatMap(new Function<ShareBean<String>, ObservableSource<ShareBean<String>>>() {
-                    @Override
-                    public ObservableSource<ShareBean<String>> apply(ShareBean<String> stringShareBean) throws Exception {
-                        if (stringShareBean.error) {
-                            return Observable.error(new RuntimeException("业务异常"));
-                        }
-                        return Observable.just(stringShareBean);
-                    }
-                });
+    public Observable<List<DetailBean>> getTodayShareData() {
+        return mRemote.getTodayShareData();
     }
 
     @Override

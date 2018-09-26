@@ -6,6 +6,7 @@ import com.lixd.example.base.data.ShareBean;
 import java.util.List;
 
 import io.reactivex.Observable;
+import okhttp3.ResponseBody;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
@@ -17,7 +18,7 @@ public interface ApiService {
      * 获取最新的分享
      */
     @GET("api/today")
-    Observable<ShareBean<String>> getTodayShare();
+    Observable<ResponseBody> getTodayShare();
 
     /**
      * 数据类型： 福利 | Android | iOS | 休息视频 | 拓展资源 | 前端 | all
